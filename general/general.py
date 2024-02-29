@@ -7,3 +7,6 @@ general_bp = Blueprint('general_bp', __name__,
 @general_bp.route('/')
 def index():
     return render_template('general/index.html')
+
+@general_bp.route('/categories')
+categories = ['bundy, kalhoty, prsteny']
