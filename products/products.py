@@ -15,4 +15,7 @@ def index():
 def detailOfProduct(id):
     data = GetSingleProducts(id)
 
-    return render_template('products/detail.html', detailOfPorduct = data, relatedProducts = related_products)
+    return render_template('products/detail.html', detailOfPorduct = data, RelatedProducts = related_products)
+
+
+

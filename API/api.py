@@ -23,9 +23,11 @@ def GetSingleProducts(id):
     
     return json.loads(request.text)
 
+
 def GetRelatedProducts(category):
-    request = requests.get(f"{URL_API}/products/category/{category}")
+    request = requests.get(f"{URL_API}/products/detail/ {category}")
     products = json.loads(request.text)
     return products[:4] 
     
+
 

@@ -9,4 +9,6 @@ def index():
     return render_template('general/index.html')
 
 @general_bp.route('/categories')
-categories = ['bundy, kalhoty, prsteny']
+def display_categories():
+    categories = ['bundy', 'kalhoty', 'prsteny']
+    return render_template('general/categories/index.html', categories=categories)
