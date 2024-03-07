@@ -25,9 +25,12 @@ def GetSingleProducts(id):
 
 
 def GetRelatedProducts(category):
-    request = requests.get(f"{URL_API}/products/detail/ {category}")
+    request = requests.get(f"{URL_API}general/category/", {category})
     products = json.loads(request.text)
     return products[:4] 
     
-
+def get_category(category):
+    response = requests.get(category)
+    products = response.json()
+    return render_template('general/index.html', categories = category)
 

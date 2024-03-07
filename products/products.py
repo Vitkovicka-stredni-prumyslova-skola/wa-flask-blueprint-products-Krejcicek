@@ -14,8 +14,11 @@ def index():
 @products_bp.route('/products/<int:id>')
 def detailOfProduct(id):
     data = GetSingleProducts(id)
+    related_products = GetRelatedProducts(data['category'])
 
     return render_template('products/detail.html', detailOfPorduct = data, RelatedProducts = related_products)
 
-
+products_bp.route('/products/add')
+def addProduct():
+    return render_template('products/new-product.html')
 
