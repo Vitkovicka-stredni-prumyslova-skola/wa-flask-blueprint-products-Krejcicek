@@ -34,3 +34,23 @@ def get_category(category):
     products = response.json()
     return render_template('general/index.html', categories = category)
 
+#produkt n
+def AddProduct(data):
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(f"{URL_API}/products", headers=headers, json=data)
+    return response.json()
+
+@api_bp.route('/add_product', methods=['POST'])
+def add_product():
+    data = request.json
+    if not data:
+        return json({'error': 'No data provided'}), 400
+    
+    if 'name' not in data or 'price' not in data:
+        return json({'error': 'Name and price are required'}), 400
+    
+    new_product = AddProduct(data)
+    if new_product:
+        return json({'message': 'Product added successfully', 'product': new_product}), 201
+    else:
+        return json({'error': 'Failed to add product'}), 500

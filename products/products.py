@@ -22,3 +22,23 @@ products_bp.route('/products/add')
 def addProduct():
     return render_template('products/new-product.html')
 
+
+
+
+@products_bp.route('/products/add', methods=['GET', 'POST'])
+def addProduct():
+    if request.method == 'POST':
+        data = {
+            'name': request.form.get('name'),
+            'price': request.form.get('price'),
+            'category': request.form.get('category'),
+            
+        }
+     
+        new_product = AddProduct(data)
+        if new_product:
+            return redirect(url_for('products_bp.index'))  
+        else:
+            return render_template('error.html', message='Failed to add product') 
+    else:
+        return render_template('products/new-product.html')  u
